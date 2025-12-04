@@ -27,6 +27,14 @@ const MainScreen = ({ navigation }) => {
         }
         return true;
     };
+
+    const convertCurrency = () => {
+        Keyboard.dismiss(); // Hides keyboard when button clicked
+        if (!validateInput()) return;
+
+        // Temporary alert to prove it works
+        Alert.alert("Success", "Inputs are valid! API call coming next.");
+  };
   
   return (
     <View style={styles.container}>
@@ -54,6 +62,13 @@ const MainScreen = ({ navigation }) => {
         keyboardType="numeric"
       />
       
+       <View style={styles.buttonContainer}>
+        <Button 
+          title="Convert" 
+          onPress={convertCurrency} 
+        />
+      </View>
+
       <View style={styles.spacer} />
       
       <Button 
@@ -69,6 +84,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#f5f5f5', justifyContent: 'center' },
   header: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
   spacer: { marginTop: 20 },
+  buttonContainer: { marginTop: 10, marginBottom: 20 },
 });
 
 export default MainScreen;
