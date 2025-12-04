@@ -65,7 +65,12 @@ const convertCurrency = async () => {
       });
 
     } catch (error) {
-      Alert.alert('Error', error.message || 'Network request failed');
+      console.error(error); 
+      let msg = 'Network request failed. Please check your internet connection.';
+      if (error.message) {
+        msg = error.message;
+      }
+      Alert.alert('Conversion Failed', msg);
     } finally {
       setLoading(false);
     }
