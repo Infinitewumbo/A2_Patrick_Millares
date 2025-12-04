@@ -28,12 +28,47 @@ const MainScreen = ({ navigation }) => {
         return true;
     };
 
-    const convertCurrency = () => {
-        Keyboard.dismiss(); // Hides keyboard when button clicked
-        if (!validateInput()) return;
+const convertCurrency = async () => {
+    Keyboard.dismiss();
+    setResult(null); // Reset previous result
 
-        // Temporary alert to prove it works
-        Alert.alert("Success", "Inputs are valid! API call coming next.");
+    if (!validateInput()) return;
+
+    setLoading(true);
+    
+    // REPLACE THIS with your actual API key
+    const API_KEY = 'your_freecurrencyapi_key_here'; 
+
+    try {
+      const response = await fetch(
+        `https://api.freecurrencyapi.com/v1/latest?apikey=${API_KEY}&base_currency=${base}&currencies=${destination}`
+      );
+
+      const data = await response.json();
+
+      // Handle API errors (if data.errors exists or if the specific currency is missing)
+      if (data.errors) {
+        throw new Error('Invalid API Key or API limit reached.');
+      }
+      
+      if (!data.data || !data.data[destination]) {
+        throw new Error(`Rate for ${destination} not found.`);
+      }
+
+      const rate = data.data[destination];
+      const convertedValue = (parseFloat(amount) * rate).toFixed(2);
+
+      setResult({
+        converted: convertedValue,
+        rate: rate,
+        symbol: destination
+      });
+
+    } catch (error) {
+      Alert.alert('Error', error.message || 'Network request failed');
+    } finally {
+      setLoading(false);
+    }
   };
   
   return (
