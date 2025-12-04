@@ -10,6 +10,24 @@ const MainScreen = ({ navigation }) => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
+    const validateInput = () => {
+        const currencyRegex = /^[A-Z]{3}$/;
+        
+        if (!currencyRegex.test(base)) {
+        Alert.alert('Validation Error', 'Base currency must be 3 letters (e.g., CAD).');
+        return false;
+        }
+        if (!currencyRegex.test(destination)) {
+        Alert.alert('Validation Error', 'Destination currency must be 3 letters (e.g., USD).');
+        return false;
+        }
+        if (isNaN(amount) || parseFloat(amount) <= 0) {
+        Alert.alert('Validation Error', 'Amount must be a positive number.');
+        return false;
+        }
+        return true;
+    };
+  
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Currency Converter</Text>
