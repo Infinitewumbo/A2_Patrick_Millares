@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert, Keyboard } from 'react-native';
 import LabeledInput from '../components/LabeledInput';
+import { View, Text, Button, StyleSheet, Alert, Keyboard, ActivityIndicator } from 'react-native';
 
 const MainScreen = ({ navigation }) => {
   const [base, setBase] = useState('CAD');
@@ -69,6 +70,20 @@ const MainScreen = ({ navigation }) => {
         />
       </View>
 
+     {loading && <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />}
+
+      {result && (
+        <View style={styles.resultContainer}>
+          <Text style={styles.resultText}>
+            {amount} {base} =
+          </Text>
+          <Text style={styles.convertedText}>
+            {result.converted} {result.symbol}
+          </Text>
+          <Text style={styles.rateText}>Rate: 1 {base} = {result.rate} {result.symbol}</Text>
+        </View>
+      )}
+
       <View style={styles.spacer} />
       
       <Button 
@@ -85,6 +100,18 @@ const styles = StyleSheet.create({
   header: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
   spacer: { marginTop: 20 },
   buttonContainer: { marginTop: 10, marginBottom: 20 },
+  loader: { marginTop: 10 },
+  resultContainer: { 
+    alignItems: 'center', 
+    marginVertical: 20, 
+    padding: 15, 
+    backgroundColor: '#fff', 
+    borderRadius: 10, 
+    elevation: 3 
+  },
+  resultText: { fontSize: 18, color: '#555' },
+  convertedText: { fontSize: 32, fontWeight: 'bold', color: '#007AFF' },
+  rateText: { fontSize: 14, color: '#888', marginTop: 5 },
 });
 
 export default MainScreen;
