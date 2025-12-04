@@ -15,25 +15,54 @@ const AboutScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  container: { 
+    flex: 1, 
+    backgroundColor: '#f0f2f5', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    padding: 24, 
+  },
+  header: { 
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    color: '#1f2937',
+    marginBottom: 30, 
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    width: '100%',
+    padding: 24,
+    borderRadius: 20,
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    elevation: 4, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    marginBottom: 30,
   },
-  header: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#333',
+  label: { 
+    fontSize: 12, 
+    color: '#6b7280', 
+    textTransform: 'uppercase', 
+    letterSpacing: 1, 
+    marginTop: 15,
   },
-  text: {
-    fontSize: 18,
-    marginBottom: 10,
-    textAlign: 'center',
-    color: '#555',
+  value: { 
+    fontSize: 22, 
+    fontWeight: '700', 
+    color: '#111827', 
+    marginTop: 5,
   },
+  description: { 
+    paddingHorizontal: 10,
+  },
+  text: { 
+    fontSize: 16, 
+    textAlign: 'center', 
+    lineHeight: 26, 
+    color: '#4b5563', 
+  }
 });
 
 export default AboutScreen;

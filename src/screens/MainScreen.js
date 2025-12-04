@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, Alert, Keyboard, ActivityIndicator } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert, Keyboard, ActivityIndicator, TouchableOpacity } from 'react-native';
 import LabeledInput from '../components/LabeledInput';
 
 const MainScreen = ({ navigation }) => {
@@ -102,13 +102,15 @@ const convertCurrency = async () => {
         keyboardType="numeric"
       />
       
-      <View style={styles.buttonContainer}>
-        <Button 
-          title="Convert" 
-          onPress={convertCurrency} 
-          disabled={loading} 
-        />
-      </View>
+      <TouchableOpacity 
+        style={[styles.convertButton, loading && styles.buttonDisabled]} 
+        onPress={convertCurrency}
+        disabled={loading}
+      >
+        <Text style={styles.buttonText}>
+          {loading ? 'Converting...' : 'Convert Currency'}
+        </Text>
+      </TouchableOpacity>
 
      {loading && <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />}
 
@@ -136,22 +138,73 @@ const convertCurrency = async () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#f5f5f5', justifyContent: 'center' },
-  header: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
-  spacer: { marginTop: 20 },
-  buttonContainer: { marginTop: 10, marginBottom: 20 },
-  loader: { marginTop: 10 },
+  container: { 
+    flex: 1, 
+    padding: 24, 
+    backgroundColor: '#f0f2f5', 
+    justifyContent: 'center' 
+  },
+  header: { 
+    fontSize: 32, 
+    fontWeight: '800', 
+    color: '#1f2937', 
+    marginBottom: 40, 
+    textAlign: 'center',
+    letterSpacing: -1, 
+  },
+  convertButton: {
+    backgroundColor: '#4f46e5', 
+    paddingVertical: 16,
+    borderRadius: 16,
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 30,
+    shadowColor: '#4f46e5',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  buttonDisabled: {
+    backgroundColor: '#a5b4fc', 
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  loader: { 
+    marginTop: 20 
+  },
   resultContainer: { 
     alignItems: 'center', 
-    marginVertical: 20, 
-    padding: 15, 
+    padding: 24, 
     backgroundColor: '#fff', 
-    borderRadius: 10, 
-    elevation: 3 
+    borderRadius: 20, 
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   },
-  resultText: { fontSize: 18, color: '#555' },
-  convertedText: { fontSize: 32, fontWeight: 'bold', color: '#007AFF' },
-  rateText: { fontSize: 14, color: '#888', marginTop: 5 },
+  resultText: { 
+    fontSize: 16, 
+    color: '#6b7280', 
+    marginBottom: 5 
+  },
+  convertedText: { 
+    fontSize: 36, 
+    fontWeight: '900', 
+    color: '#111827', 
+  },
+  rateText: { 
+    fontSize: 12, 
+    color: '#9ca3af', 
+    marginTop: 10 
+  },
+  spacer: { 
+    flex: 1 
+  },
 });
 
 export default MainScreen;

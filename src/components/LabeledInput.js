@@ -17,15 +17,32 @@ const LabeledInput = ({ label, value, onChangeText, placeholder, keyboardType })
 };
 
 const styles = StyleSheet.create({
-  container: { marginBottom: 20, width: '100%' },
-  label: { fontSize: 16, marginBottom: 5, fontWeight: '600' },
+  container: {
+    marginBottom: 20,
+    width: '100%',
+  },
+  label: {
+    fontSize: 14,
+    color: '#6b7280', 
+    fontWeight: '600',
+    marginBottom: 8,
+    marginLeft: 4,
+    textTransform: 'uppercase', 
+    letterSpacing: 1,
+  },
   input: {
+    backgroundColor: '#ffffff',
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 10,
-    fontSize: 16,
-    backgroundColor: '#fff',
+    borderColor: '#e5e7eb', 
+    borderRadius: 12, 
+    padding: 15,
+    fontSize: 18,
+    color: '#1f2937', 
+    elevation: 2, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
   },
 });
 
