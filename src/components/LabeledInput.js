@@ -17,7 +17,7 @@ const LabeledInput = ({ label, value, onChangeText, placeholder, keyboardType })
 };
 
 const styles = StyleSheet.create({
-  container: { marginBottom: 15, width: '100%' },
+  container: { marginBottom: 20, width: '100%' },
   label: { fontSize: 16, marginBottom: 5, fontWeight: '600' },
   input: {
     borderWidth: 1,
