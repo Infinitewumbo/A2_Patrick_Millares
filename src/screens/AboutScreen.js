@@ -15,9 +15,25 @@ const AboutScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header: { fontSize: 20, fontWeight: 'bold' },
-  text: { fontSize: 16 }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  header: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#333',
+  },
+  text: {
+    fontSize: 18,
+    marginBottom: 10,
+    textAlign: 'center',
+    color: '#555',
+  },
 });
 
 export default AboutScreen;
