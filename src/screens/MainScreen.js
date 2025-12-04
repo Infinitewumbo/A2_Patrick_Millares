@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, Alert, Keyboard } from 'react-native';
-import LabeledInput from '../components/LabeledInput';
 import { View, Text, Button, StyleSheet, Alert, Keyboard, ActivityIndicator } from 'react-native';
+import LabeledInput from '../components/LabeledInput';
 
 const MainScreen = ({ navigation }) => {
   const [base, setBase] = useState('CAD');
