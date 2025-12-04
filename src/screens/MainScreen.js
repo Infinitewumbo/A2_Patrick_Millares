@@ -102,10 +102,11 @@ const convertCurrency = async () => {
         keyboardType="numeric"
       />
       
-       <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <Button 
           title="Convert" 
           onPress={convertCurrency} 
+          disabled={loading} 
         />
       </View>
 
