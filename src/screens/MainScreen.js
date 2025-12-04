@@ -14,7 +14,27 @@ const MainScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.header}>Currency Converter</Text>
       
-      {/* Inputs will go here next */}
+      <LabeledInput 
+        label="Base Currency" 
+        value={base} 
+        onChangeText={(text) => setBase(text.toUpperCase())} 
+        placeholder="e.g. CAD"
+      />
+      
+      <LabeledInput 
+        label="Destination Currency" 
+        value={destination} 
+        onChangeText={(text) => setDestination(text.toUpperCase())} 
+        placeholder="e.g. USD"
+      />
+
+      <LabeledInput 
+        label="Amount" 
+        value={amount} 
+        onChangeText={setAmount} 
+        placeholder="1.00"
+        keyboardType="numeric"
+      />
       
       <View style={styles.spacer} />
       
